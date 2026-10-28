@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="VOO ETF 가격과 차트를 살펴보는 대시보드. 업로드 이미지 기반의 배포 연습용 예시 데이터입니다.">
+<title>VOO · ETF 대시보드</title>
+<style>
+:root{font-family:Arial,"Noto Sans KR","Malgun Gothic",sans-serif;color:#121826;background:#fff;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}main{max-width:1000px;margin:52px auto;padding:0 24px}header{display:flex;align-items:center;justify-content:space-between;margin-bottom:25px;color:#6b7280;font-size:13px}.brand{font-weight:700;color:#28364e;letter-spacing:.08em}.demo{border:1px solid #e0e4ec;border-radius:20px;padding:6px 12px;font-size:12px}
+.card{background:#f6f7fa;border-radius:20px 20px 0 0;padding:27px 24px 8px}h1{font-size:20px;font-weight:500;margin:0 0 6px;color:#111}.ticker{color:#5a6478;font-size:15px}.price-row{display:flex;gap:16px;align-items:center;margin-bottom:5px}.price{font-size:38px;letter-spacing:-1.2px;font-weight:500;font-variant-numeric:tabular-nums}.change{background:#ffdadd;color:#b01f2f;font-size:13px;font-weight:600;padding:5px 8px;border-radius:4px}.meta{font-size:13px;color:#7d8799;line-height:1.6}.premarket{color:#182d50}.up{color:#00a747}.chart-wrap{position:relative;margin-top:20px}svg{display:block;width:100%;height:auto;touch-action:pan-y}svg text{font-family:inherit;fill:#737a8b;font-size:13px}.previous{fill:#252a32;font-size:16px}.grid{stroke:#dce0e8;stroke-width:1}.chart-line{fill:none;stroke:#ff3046;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}.extended{fill:none;stroke:#868686;stroke-width:2}.crosshair{stroke:#a3aabb;stroke-dasharray:4 4}.tooltip{position:absolute;background:#fff;border:1px solid #e4e7ef;box-shadow:0 4px 20px #19243b12;border-radius:8px;padding:9px 12px;pointer-events:none;top:8px;font-size:13px;color:#4a556c;white-space:nowrap;display:none}.tooltip strong{display:block;color:#151d2d;margin-top:4px;font-size:16px}
+.toolbar{background:#f6f7fa;border-top:2px solid #fff;border-radius:0 0 18px 18px;padding:12px 16px;display:flex;align-items:center;gap:16px}.date-label{font-size:12px;color:#66728b;line-height:1.6;min-width:180px}.periods{display:flex;gap:5px;flex:1;justify-content:space-between;overflow-x:auto}button{font:inherit;cursor:pointer}.periods button{border:0;background:transparent;color:#596780;white-space:nowrap;padding:9px 11px;border-radius:7px;font-size:13px}.periods button:hover{background:#e8ebf2}.periods button[aria-pressed=true]{background:#e1e5ee;color:#202d46;font-weight:700}button:focus-visible,svg:focus-visible{outline:3px solid #4269bb;outline-offset:3px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:2px 10px 0}.stats dl{margin:0}.stat{display:flex;justify-content:space-between;gap:12px;padding:17px 0;border-bottom:1px solid #dce1eb;font-size:13px}.stat:last-child{border:0}dt{color:#62718b}dd{margin:0;color:#162b4e;font-variant-numeric:tabular-nums}footer{border-top:1px solid #edf0f4;margin-top:28px;padding-top:18px;font-size:12px;color:#8a93a3;line-height:1.8}.chart-note{min-height:20px;color:#7c8595;font-size:12px;padding:10px 10px 0}
+@media(min-width:1300px){main{margin-top:80px}}
+@media(max-width:640px){main{margin:24px auto;padding:0 12px}header{margin-bottom:18px}.card{padding:22px 16px 4px;border-radius:16px 16px 0 0}h1{font-size:17px}.price{font-size:32px}.price-row{gap:12px}.toolbar{flex-direction:column;align-items:stretch;gap:6px;padding:10px}.date-label{font-size:11px}.periods{gap:0}.periods button{padding:9px 10px;font-size:12px}.stats{grid-template-columns:repeat(2,1fr);gap:0 22px;padding:0 6px}.stats dl:last-child{grid-column:1/-1;display:flex;gap:22px}.stats dl:last-child .stat{flex:1;border-bottom:0}svg text{font-size:15px}.demo{font-size:10px}.chart-note{font-size:11px}}
+@media(prefers-reduced-motion:no-preference){.periods button{transition:background .15s}}
+</style>
+</head>
+<body>
+<main>
+<header><span class="brand">ETF / MARKET</span><span class="demo">배포 연습 · 예시 데이터</span></header>
+<section aria-labelledby="fund-name">
+<div class="card">
+<h1 id="fund-name">Vanguard S&amp;P 500 ETF<span class="ticker"> (VOO)</span></h1>
+<div class="price-row"><span class="price">US$707.52</span><span class="change">↑ 0.58% 오늘</span></div>
+<div class="meta">마감: 오전 5:00 · 면책 조항</div>
+<div class="meta">장외 거래: 오전 9:00 <span class="premarket">US$707.95</span> <span class="up">0.06%</span></div>
+<div class="chart-wrap">
+<svg id="chart" viewBox="0 0 880 280" role="img" tabindex="0" aria-label="VOO 1일 예시 가격 차트. 좌우 방향키로 가격을 확인하세요.">
+<defs><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ff3046" stop-opacity=".13"/><stop offset="1" stop-color="#ff3046" stop-opacity=".01"/></linearGradient><clipPath id="plot"><rect x="40" y="10" width="690" height="224"/></clipPath></defs>
+<g id="grid"></g><line id="baseline" x1="40" x2="730" y1="221" y2="221" stroke="#424850" stroke-dasharray="2 3"/>
+<g clip-path="url(#plot)"><path id="area" fill="url(#fade)"/><path id="line" class="chart-line"/><path id="extended" class="extended"/><line id="crosshair" class="crosshair" y1="10" y2="234" visibility="hidden"/><circle id="hover-dot" r="4" fill="#ff3046" stroke="white" stroke-width="2" visibility="hidden"/></g>
+<circle id="end-dot" cx="730" cy="33" r="5.5" fill="#858585"/>
+<text class="previous" x="745" y="207">전일 종가</text><text class="previous" id="previous-value" x="745" y="226">US$703.41</text>
+</svg>
+<div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
+</div>
+</div>
+<div class="toolbar"><div class="date-label" id="date-label">10월 27일 오후 10:30 - 10월 28일 오전 9:00</div><nav class="periods" aria-label="차트 기간"><button aria-pressed="true" data-period="1일">1일</button><button aria-pressed="false" data-period="5일">5일</button><button aria-pressed="false" data-period="1개월">1개월</button><button aria-pressed="false" data-period="6개월">6개월</button><button aria-pressed="false" data-period="YTD">YTD</button><button aria-pressed="false" data-period="1년">1년</button><button aria-pressed="false" data-period="5년">5년</button><button aria-pressed="false" data-period="전체">전체</button></nav></div>
+<div class="chart-note" id="chart-note">차트 위에 마우스를 올리거나 터치하면 예시 가격을 확인할 수 있습니다.</div>
+<div class="stats" aria-label="주요 지표"><dl><div class="stat"><dt>시가</dt><dd>705.38</dd></div><div class="stat"><dt>최고가</dt><dd>708.77</dd></div><div class="stat"><dt>최저가</dt><dd>703.38</dd></div></dl><dl><div class="stat"><dt>시가총액</dt><dd>-</dd></div><div class="stat"><dt>주가수익률</dt><dd>-</dd></div><div class="stat"><dt>배당수익률</dt><dd>-</dd></div></dl><dl><div class="stat"><dt>52주 최고가</dt><dd>718.47</dd></div><div class="stat"><dt>52주 최저가</dt><dd>578.46</dd></div></dl></div>
+</section>
+<footer>업로드된 화면을 바탕으로 만든 VOO ETF 대시보드입니다.<br>모든 가격과 차트는 배포 연습을 위한 예시이며 실시간 시세가 아닙니다. 기간별 차트는 시뮬레이션입니다.</footer>
+</main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const intraday=[705.38,705.55,706.2,705.7,704.35,704.22,704.33,703.95,704.02,703.98,703.45,703.82,704.65,705.5,705.45,705.3,706.25,706.65,707.18,706.83,707.25,707.62,707.64,707.59,707.34,707.7,708.25,708.12,708.15,708.6,708.55,708.23,708.12,708.14,708.28,708.06,707.9,707.65,707.1,706.94,707,707.3,706.96,707.18,707.57,707.38,707.32,707.43,707.68,707.48,707.89,707.73,707.63,707.48,707.32,707.43,707.55,707.4,707.13,707.02,707.02,707.1,707.23,707.18,707.28,707.72,707.99,708.08,708.14,708.08,708.54,708.59,708.57,708.24,707.52];
+const after=[707.85,707.81,707.79,707.78,707.74,707.62,707.5,707.32,707.45,707.42,707.34,707.4,707.43,707.45,707.5,708.02,708.03,708.06,707.88,707.65,707.3,707.35,707.5,707.61,707.65,707.74,707.75,707.69,707.72,707.68,707.63,707.57,707.94,707.73,707.97,707.85,707.95];
+const configs={'1일':{min:703,max:708.8,base:703.41,ticks:[708,706,704],labels:['오전 12:00','오전 2:00','오전 4:00','오전 6:00','오전 8:00'],range:'10월 27일 오후 10:30 - 10월 28일 오전 9:00'},'5일':{min:690,max:712,base:694.2,labels:['10/22','10/23','10/24','10/27','10/28'],range:'10월 22일 - 10월 28일'},'1개월':{min:670,max:720,base:681.3,labels:['9/28','10/5','10/12','10/19','10/28'],range:'9월 28일 - 10월 28일'},'6개월':{min:560,max:740,base:579.8,labels:['5월','6월','7월','8월','10월'],range:'4월 28일 - 10월 28일'},'YTD':{min:540,max:740,base:553.4,labels:['1월','3월','5월','7월','10월'],range:'1월 1일 - 10월 28일'},'1년':{min:520,max:740,base:539.5,labels:['2025.10','1월','4월','7월','2026.10'],range:'2025년 10월 - 2026년 10월'},'5년':{min:300,max:750,base:320,labels:['2021','2022','2023','2024','2026'],range:'2021년 10월 - 2026년 10월'},'전체':{min:80,max:760,base:100,labels:['2010','2014','2018','2022','2026'],range:'2010년 - 2026년'}};
+let current='1일',values=[],selected=0;
+const svg=$('chart'),ns='http://www.w3.org/2000/svg';
+function el(tag,attrs,text){let e=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));if(text)e.textContent=text;return e}
+function y(v){const c=configs[current];return 234-(v-c.min)/(c.max-c.min)*224}
+function path(data,start,end){return data.map((v,i)=>(i?'L':'M')+(start+i/(data.length-1)*(end-start)).toFixed(2)+','+y(v).toFixed(2)).join(' ')}
+function draw(period){current=period;let c=configs[period],daily=period==='1일';
+values=daily?intraday.concat(after):Array.from({length:100},(_,i)=>{let t=i/99;return c.base+(707.52-c.base)*t+Math.sin(i*.6)*((c.max-c.min)*.045)*Math.sin(Math.PI*t)+Math.sin(i*.18)*((c.max-c.min)*.065)*Math.sin(Math.PI*t)});
+$('grid').replaceChildren();(c.ticks||[c.min+(c.max-c.min)*.85,c.min+(c.max-c.min)*.5,c.min+(c.max-c.min)*.15]).forEach(v=>$('grid').append(el('text',{x:3,y:y(v)+4},Math.round(v).toString())));
+c.labels.forEach((label,i)=>{let x=140+i*132;$('grid').append(el('line',{x1:x,x2:x,y1:10,y2:234,class:'grid'}));$('grid').append(el('text',{x,y:268,'text-anchor':'middle'},label))});
+let end=daily?468:730,main=daily?intraday:values,p=path(main,40,end);
+$('line').setAttribute('d',p+(daily?' L730,'+y(707.52):''));
+$('area').setAttribute('d',p+(daily?' L730,'+y(707.52):'')+' L730,234 L40,234 Z');
+$('extended').setAttribute('d',daily?path(after,475,730):'');
+$('end-dot').setAttribute('cy',y(daily?707.95:707.52));$('end-dot').setAttribute('fill',daily?'#858585':'#ff3046');
+$('baseline').setAttribute('y1',y(c.base));$('baseline').setAttribute('y2',y(c.base));
+$('previous-value').textContent='US$'+c.base.toFixed(2);document.querySelector('.previous').textContent=daily?'전일 종가':'기간 시작';
+$('date-label').textContent=c.range;svg.setAttribute('aria-label','VOO '+period+' 예시 가격 차트. 좌우 방향키로 가격을 확인하세요.');
+document.querySelectorAll('[data-period]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.period===period)));hide()}
+function show(i){selected=Math.max(0,Math.min(values.length-1,i));let value=values[selected],x=40+selected/(values.length-1)*690;
+$('crosshair').setAttribute('x1',x);$('crosshair').setAttribute('x2',x);$('crosshair').setAttribute('visibility','visible');$('hover-dot').setAttribute('cx',x);$('hover-dot').setAttribute('cy',y(value));$('hover-dot').setAttribute('visibility','visible');
+let label;if(current==='1일'){let mins=22*60+30+selected/(values.length-1)*630;let h=Math.floor(mins/60)%24,m=Math.round(mins%60);if(m===60){h=(h+1)%24;m=0}label=(h<12?'오전 ':'오후 ')+(h%12||12)+':'+String(m).padStart(2,'0')}else label=configs[current].range+' · '+Math.round(selected/(values.length-1)*100)+'% 지점';
+$('tooltip').replaceChildren(document.createTextNode(label));let strong=document.createElement('strong');strong.textContent='US$'+value.toFixed(2);$('tooltip').append(strong);$('tooltip').style.display='block';$('tooltip').style.left=Math.min(Math.max(x/880*100,3),67)+'%'}
+function hide(){$('tooltip').style.display='none';$('crosshair').setAttribute('visibility','hidden');$('hover-dot').setAttribute('visibility','hidden')}
+document.querySelectorAll('[data-period]').forEach(b=>b.addEventListener('click',()=>draw(b.dataset.period)));
+svg.addEventListener('pointermove',e=>{let r=svg.getBoundingClientRect(),x=(e.clientX-r.left)/r.width*880;show(Math.round((x-40)/690*(values.length-1)))});
+svg.addEventListener('pointerleave',hide);svg.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();show(selected+(e.key==='ArrowRight'?1:-1))}if(e.key==='Escape')hide()});svg.addEventListener('blur',hide);draw('1일');
+</script>
+</body>
+</html>
