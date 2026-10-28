@@ -1,2 +1,18 @@
-# voo-dashboard
-VOO ETF dashboard — responsive interactive demo
+# VOO ETF 대시보드
+
+업로드된 화면을 참고해 만든 반응형 ETF 대시보드입니다.
+
+## 웹사이트
+https://yhokimm.github.io/voo-dashboard/
+
+## 기능
+- VOO 가격, 일중 차트, 장외 거래와 주요 지표
+- 8가지 기간 선택과 시뮬레이션 차트
+- 마우스, 터치, 키보드 방향키로 가격 확인
+- 모바일 반응형 레이아웃
+
+## 데이터
+가격과 지표는 업로드 이미지에 표시된 예시입니다. 일중 차트는 이미지를 참고한 재현이며 다른 기간은 시뮬레이션입니다. 실시간 시세 API를 연결하지 않았습니다.
+
+## 수정과 배포
+`index.html`을 수정하고 `main` 브랜치에 저장하면 GitHub Pages가 자동 배포합니다. 별도의 빌드나 외부 라이브러리, API 키가 필요하지 않습니다.
